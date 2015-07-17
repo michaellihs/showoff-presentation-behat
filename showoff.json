@@ -1,0 +1,18 @@
+{
+  "name": "Behavior Driven Development with Behat",
+  "description": "",
+  "author": "Michael Lihs",
+  "pause_msg": "Paused",
+  "sections": [
+    {"section":"01_title"},
+    {"section":"02_about_me"},
+    {"section":"03_agenda"},
+    {"section":"04_introduction"},
+    {"section":"05_tdd_vs_bdd"},
+    {"section":"06_gherkin"},
+    {"section":"07_behat_setup"},
+    {"section":"08_custom_step_definitions"},
+    {"section":"10_best_practices"},
+    {"section":"99_resources"}
+  ]
+}
