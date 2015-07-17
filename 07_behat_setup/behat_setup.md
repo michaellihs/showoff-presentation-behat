@@ -79,4 +79,5 @@
 # Run Your Tests
 
 # From within the test-extension in TYPO3
-$ bin/behat
+
+    $ bin/behat
