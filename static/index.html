@@ -602,6 +602,75 @@ Scenario: Greg posts to a client's blog
       PunktDe\ResponsiveContext</code></pre>
 </div>
 </div>
+<div id="09_gherkin_revisited_gherkin_revisited" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="09_gherkin_revisited/gherkin_revisited/1">
+<h1>Gherkin Revisited</h1>
+
+<h2>The Remaining Features</h2>
+</div>
+</div>
+<div id="09_gherkin_revisited_gherkin_revisited" class="slide " data-transition="none">
+<div class="content " ref="09_gherkin_revisited/gherkin_revisited/2">
+<h1>Scenario Outlines</h1>
+
+<ul>
+<li>Avoid <em>copy and paste scenarios</em>
+</li>
+<li>Provide a <em>template</em> and <em>examples</em>
+</li>
+<li>Use placeholder to fill in values</li>
+</ul>
+</div>
+</div>
+<div id="09_gherkin_revisited_gherkin_revisited" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="09_gherkin_revisited/gherkin_revisited/3">
+<pre class="sh_gherkin"><code># Without scenario outlines
+
+Scenario: Eat 5 out of 12
+  Given there are 12 cucumbers
+  When I eat 5 cucumbers
+  Then I should have 7 cucumbers
+
+Scenario: Eat 5 out of 20
+  Given there are 20 cucumbers
+  When I eat 5 cucumbers
+  Then I should have 15 cucumbers</code></pre>
+</div>
+</div>
+<div id="09_gherkin_revisited_gherkin_revisited" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="09_gherkin_revisited/gherkin_revisited/4">
+<pre class="sh_gherkin"><code># With scenario outlines
+
+Scenario Outline: Eating
+  Given there are &lt;start&gt; cucumbers
+  When I eat &lt;eat&gt; cucumbers
+  Then I should have &lt;left&gt; cucumbers
+
+  Examples:
+    | start | eat | left |
+    |  12   |  5  |  7   |
+    |  20   |  5  |  15  |</code></pre>
+</div>
+</div>
+<div id="09_gherkin_revisited_gherkin_revisited" class="slide " data-transition="none">
+<div class="content " ref="09_gherkin_revisited/gherkin_revisited/5">
+<h1>Using Givens as Data Fixtures</h1>
+
+<ul>
+<li>Data fixtures are normally in separate files</li>
+<li>Alternative: use <code>Given</code> step with table</li>
+<li>Makes tests easier readable</li>
+</ul>
+</div>
+</div>
+<div id="09_gherkin_revisited_gherkin_revisited" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="09_gherkin_revisited/gherkin_revisited/6">
+<pre class="sh_gherkin"><code>Given there are users:
+| username | password | email               |
+| everzet  | 123456   | everzet@knplabs.com |
+| fabpot   | 22@222   | fabpot@symfony.com  |</code></pre>
+</div>
+</div>
 <div id="10_best_practices_best_practices" class="slide section_slide" data-transition="none">
 <div class="content section_slide" ref="10_best_practices/best_practices/1">
 <h1>Best Practices</h1>
