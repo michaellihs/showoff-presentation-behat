@@ -78,6 +78,5 @@
 !SLIDE code_slide
 # Run Your Tests
 
-# From within the test-extension in TYPO3
-
+    # From within the test-extension in TYPO3
     $ bin/behat
