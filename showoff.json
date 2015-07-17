@@ -12,6 +12,7 @@
     {"section":"06_gherkin"},
     {"section":"07_behat_setup"},
     {"section":"08_custom_step_definitions"},
+    {"section":"09_gherkin_revisited"},
     {"section":"10_best_practices"},
     {"section":"99_resources"}
   ]

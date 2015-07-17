@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>Go LEAN oder wie wir weniger Müll produzieren</title>
+  <title>Behavior Driven Development with Behat</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
 
@@ -33,6 +33,11 @@
   <script type="text/javascript" src=".//js/showoffcore.js"></script>
   <script type="text/javascript" src=".//js/coffee-script.js"></script>
 
+      <script type="text/javascript" src=".//js/sh_lang/sh_gherkin.min.js"></script>
+      <script type="text/javascript" src=".//js/sh_lang/sh_json.min.js"></script>
+      <script type="text/javascript" src=".//js/sh_lang/sh_yaml.min.js"></script>
+      <script type="text/javascript" src=".//js/sh_lang/sh_shell.min.js"></script>
+      <script type="text/javascript" src=".//js/sh_lang/sh_php.min.js"></script>
 
     <link rel="stylesheet" href=".//file/custom.css" type="text/css"/>
 
@@ -90,665 +95,726 @@
 </div>
 
 <div id="slides" class="offscreen" style="display:none;">
-<div id="title_title" class="slide " data-transition="none">
-<div class="content " ref="title/title">
-<h1>GO LEAN</h1>
+<div id="01_title_title" class="slide title_slide" data-transition="none">
+<div class="content title_slide" ref="01_title/title">
+<h1>Behavior Driven Development with Behat</h1>
 
-<h2>oder</h2>
-
-<h2>wie wir weniger Müll produzieren</h2>
+<h2>Michael Lihs</h2>
 
 <div class="notes">
 
 </div>
 </div>
 </div>
-<div id="about_me_about_me" class="slide " data-transition="none">
-<div class="content " ref="about_me/about_me">
-<h1>@kaktusmimi</h1>
-
+<div id="02_about_me_about_me" class="slide " data-transition="none">
+<div class="content " ref="02_about_me/about_me">
 <h1>lihsmi.ch</h1>
+
+<h1>@kaktusmimi</h1>
 </div>
 </div>
-<div id="agenda_agenda" class="slide " data-transition="none">
-<div class="content " ref="agenda/agenda">
+<div id="03_agenda_agenda" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="03_agenda/agenda">
 <h1>Agenda</h1>
 
 <ul>
-<li>LEAN - WTF?!?</li>
-<li>Was hat das alles mit uns zu tun?</li>
-<li>Der LEAN Methodenkoffer</li>
-<li>Wie anfangen?</li>
-<li>Literatur</li>
+<li>TDD versus BDD</li>
+<li>Gherkin</li>
+<li>Behat Basics</li>
+<li>Extending Behat</li>
+<li>Best Practices</li>
 </ul>
 </div>
 </div>
-<div id="lean_wtf_lean_wtf" class="slide " data-transition="none">
-<div class="content " ref="lean_wtf/lean_wtf/1">
-<h1>Lean Management</h1>
+<div id="04_introduction_introduction" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="04_introduction/introduction/1">
+<h1>Introduction to Testing</h1>
 
-<ul>
-<li>Der Begriff Lean Management ... bezeichnet die Gesamtheit der Denkprinzipien, Methoden und Verfahrensweisen zur effizienten Gestaltung der gesamten Wertschöpfungskette industrieller Güter
-<br>
-<br><a href="http://de.wikipedia.org/wiki/Lean_Management">Wikipedia</a>
-</li>
-</ul>
-</div>
-</div>
-<div id="lean_wtf_lean_wtf" class="slide " data-transition="none">
-<div class="content " ref="lean_wtf/lean_wtf/2">
-<h1>WTF?!?</h1>
-</div>
-</div>
-<div id="lean_wtf_lean_wtf" class="slide " data-transition="none">
-<div class="content " ref="lean_wtf/lean_wtf/3">
-<h1>Lean Management -<br> Zweiter Versuch</h1>
-
-<ul>
-<li>Management-Ansatz aus der Fertigungsindustrie (urspr. Toyota)</li>
-<li>Kernidee:
-
-<ul>
-<li>Maximale Werte für Kunden schaffen</li>
-<li>dabei gleichzeitig 'Waste' minimieren</li>
-</ul>
-</li>
-</ul>
+<h2>What is it all about?</h2>
 
 <div class="notes">
 
-<ul>
-<li>erklären, wo LEAN herkommt</li>
-<li>Kernidee erläutern</li>
-</ul>
-
 </div>
 </div>
 </div>
-<div id="lean_wtf_lean_wtf" class="slide " data-transition="none">
-<div class="content " ref="lean_wtf/lean_wtf/4">
-<h1>Softwareentwicklung <br>≠<br>Autoindustrie ???</h1>
+<div id="04_introduction_introduction" class="slide " data-transition="none">
+<div class="content " ref="04_introduction/introduction/2">
+<h1>Quality</h1>
 
-<ul>
-<li>Beide Branchen:
-
-<ul>
-<li>
-<strong>Werte</strong> für Kunden schaffen</li>
-<li>
-<strong>Waste</strong> minimieren</li>
-<li>
-<strong>Innovation</strong> sichert Fortbestand</li>
-</ul>
-</li>
-<li>Fließband == Continuous Delivery Pipeline</li>
-</ul>
+<h2>Testing facilitates writing better software</h2>
 
 <div class="notes">
 
-<ul>
-<li>Zunächst einmal scheinen die Auto-Industrie und die Software-Branche nicht sehr viel gemeinsam zu haben</li>
-<li>Auf den zweiten Blick gibt es aber viele Parallelen, sowohl in der Motivation als auch in den Methoden</li>
-<li>Ziel dieses Vortrages ist die</li>
-</ul>
-
 </div>
 </div>
 </div>
-<div id="lean_wtf_lean_wtf" class="slide " data-transition="none">
-<div class="content " ref="lean_wtf/lean_wtf/5">
-<h1>LEAN Startup</h1>
+<div id="04_introduction_introduction" class="slide " data-transition="none">
+<div class="content " ref="04_introduction/introduction/3">
+<h1>Feedback</h1>
 
-<ul>
-<li>LEAN Ansatz bei Startups sehr populär
-
-<ul>
-<li>Produktentwicklung</li>
-<li>Innovationsmanagement</li>
-</ul>
-</li>
-<li>Übertragbar auf "etablierte" Unternehmen?</li>
-</ul>
+<h2>Testing provides fast and specific feedback</h2>
 
 <div class="notes">
 
-<ul>
-<li>LEAN Methoden haben sich im Startup-Bereich etabliert</li>
-<li>Bei Startups geht es oft darum, ein Produkt zu entwickeln
+</div>
+</div>
+</div>
+<div id="04_introduction_introduction" class="slide " data-transition="none">
+<div class="content " ref="04_introduction/introduction/4">
+<h1>Confidence</h1>
 
-<ul>
-<li>steht zunächst im Widerspruch zur "Projekt-Entwicklung" in unserem Umfeld</li>
-<li>betrachtet man aber Projekte als Produkte, tun sich plötzlich interessante Parallelen auf</li>
-</ul>
-</li>
-<li>Bleibt also die Frage, ob und wie sich Methoden aus dem Startup-Umfeld auf "etablierte" Unternehmen übertragen lassen</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/1">
-<h1>Ein kleiner <br> LEAN Methoden-Koffer</h1>
+<h2>Testing enables secure refactoring</h2>
 
 <div class="notes">
 
-<ul>
-<li>Die folgenden Slides zeigen ein paar Methoden aus dem Lean Management</li>
-<li>Vergleiche: Patterns aus der Software-Entwicklung</li>
-</ul>
-
 </div>
 </div>
 </div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/2">
-<h1>LEAN Methoden <br>a.k.a. Patterns</h1>
+<div id="04_introduction_introduction" class="slide " data-transition="none">
+<div class="content " ref="04_introduction/introduction/5">
+<h1>Acceptance</h1>
 
-<ul class="non-bullet">
-    <li>
-<strong class="rounded red">P</strong> Problemstellung</li>
-    <li>
-<strong class="rounded blue">T</strong> Tool</li>
-    <li>
-<strong class="rounded green">B</strong> Beispiel(e)</li>
-</ul>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/3">
-<h1>
-<strong class="red">P</strong> Umgang mit <br>Unsicherheit &amp; Risiko</h1>
-
-<ul>
-<li>Unser Umfeld ist geprägt von
-
-<ul>
-<li>(zu) vielen Optionen</li>
-<li>ständig neuen Technologien</li>
-<li>hoher Unsicherheit</li>
-</ul>
-</li>
-<li>Wir müssen in diesem Umfeld effizient sein
-
-<ul>
-<li>Wettbewerbsfähigkeit == Innovation?</li>
-</ul>
-</li>
-</ul>
+<h2>Testing helps to meet the clients' requirements</h2>
 
 <div class="notes">
 
-<ul>
-<li>Klären, wie der Innovationsbegriff zu verstehen ist</li>
-<li>Verbesserung ggf. ≠ Innovation
+</div>
+</div>
+</div>
+<div id="05_tdd_vs_bdd_tdd_vs_bdd" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="05_tdd_vs_bdd/tdd_vs_bdd/1">
+<h1>TDD vs BDD</h1>
+
+<h2>Focus on behavior</h2>
+</div>
+</div>
+<div id="05_tdd_vs_bdd_tdd_vs_bdd" class="slide " data-transition="none">
+<div class="content " ref="05_tdd_vs_bdd/tdd_vs_bdd/2">
+<p><img src="./file/05_tdd_vs_bdd/tdd_cycle.png" height="600px"></p>
+</div>
+</div>
+<div id="05_tdd_vs_bdd_tdd_vs_bdd" class="slide " data-transition="none">
+<div class="content " ref="05_tdd_vs_bdd/tdd_vs_bdd/3">
+<h1>Welcome to the stage: BDD</h1>
 
 <ul>
-<li>Weil es das, was man am Ende macht ggf. schon gegeben hat, man es nur noch nicht eingesetzt hat</li>
+<li>Specify tests in terms of <strong>desired behavior</strong>
+</li>
+<li>Desired behavior reflects <strong>business requirement</strong>
+</li>
+<li>Hence, BDD is an <strong>outside-in</strong> approach</li>
+</ul>
+</div>
+</div>
+<div id="05_tdd_vs_bdd_tdd_vs_bdd" class="slide " data-transition="none">
+<div class="content " ref="05_tdd_vs_bdd/tdd_vs_bdd/4">
+<h1>Specification of behavior</h1>
+
+<ul>
+<li>Specify behavior in terms of <strong>user stories</strong>
+</li>
+<li>Structure of user stories
+
+<ul>
+<li>Verbal description (non-formal)</li>
+<li>Description of <strong>involved roles</strong>
+</li>
+<li>Effects that the story should have</li>
+<li>Acceptance criteria a.k.a. <strong>expected outcome</strong>
+</li>
 </ul>
 </li>
 </ul>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="06_gherkin/gherkin/1">
+<h1>Gherkin</h1>
 
+<h2>Human readable tests</h2>
 </div>
 </div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/4">
-<h1>
-<strong class="blue">T</strong> Build-Measure-Learn <br> Feedback-Loop  (BML)</h1>
+<div id="06_gherkin_gherkin" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="06_gherkin/gherkin/2">
+<pre class="sh_gherkin"><code>Feature: Language menu
+  In order to switch the website language
+  As a example.com website user
+  I need to be able to select my language
 
-<p><img src="./file/lean_methods/build_measure_learn_2.png" height="500px"></p>
+  Scenario: Switching to German
+    When I follow "Language"
+    And I follow "Deutsch"
+    Then I should be on "/de.html"</code></pre>
 </div>
 </div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/5">
-<h1>
-<strong class="blue">T</strong> Build-Measure-Learn (BML) <br> Feedback-Loop</h1>
+<div id="06_gherkin_gherkin" class="slide " data-transition="none">
+<div class="content " ref="06_gherkin/gherkin/3">
+<h1>Gherkin Syntax</h1>
 
 <ul>
-<li><p>Arbeiten in kleinen, iterativen Zyklen</p></li>
+<li>uses indentation to define structure</li>
+<li>line endings terminate statements</li>
+<li>most lines start with a special keyword</li>
 <li>
-<p>Ziele:</p>
-
-<ul>
-<li>Lernen durch Feedback</li>
-<li>Validiertes Lernen, basierend auf Daten</li>
-<li>Waste minimieren</li>
-<li>Taktzahl erhöhen</li>
-</ul>
-</li>
-</ul>
-
-<div class="notes">
-
-<ul>
-<li>Startups: Wieviele Durchläufe, bis Geld aufgebraucht</li>
-<li>Entwicklung: Wieviele Durchläufe, bis Budget aufgebraucht</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/6">
-<h1>
-<strong class="green">B</strong> Continuous Integration Pipeline</h1>
-
-<p><img src="./file/lean_methods/ci_feedback_loops.png" height="450px"></p>
-
-<div class="notes">
-
-<ul>
-<li>Dieses Bild zeigt diverse Feedback-Loops in CI Pipeline</li>
-<li>Entwickler baut etwas</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/7">
-<h1>Wie kann <br>BML Feedback-Loop <br> umgesetzt werden?</h1>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/8">
-<h1>
-<strong class="red">P</strong> Wie erreicht man schnelle Feedbackzyklen?</h1>
-
-<ul>
-<li>Wie kann Feedback automatisiert werden?</li>
-<li>Wie bekommt man spezifisches Feedback?</li>
-<li>Wie schafft man mehr Durchläufe?</li>
+<code>#</code> comments out a line</li>
 </ul>
 </div>
 </div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/9">
-<h1>
-<strong class="blue">T</strong> Small Batches</h1>
-
-<ul>
-<li>Kanban / SCRUM
-
-<ul>
-<li>WIP Limits</li>
-<li>Kein Queueing</li>
-<li>Dinge zu Ende bringen</li>
-</ul>
-</li>
-</ul>
-
-<div class="notes">
-
-<ul>
-<li>CI / CD ist das Tool, um mit small Batches arbeiten zu können
-
-<ul>
-<li>Möglichkeit der "kostenfreien" Auslieferung kleiner Iterationen</li>
-<li>Zahlreiche Möglichkeiten für Feedback (Tests, Code-Review, Kunden-Abnahmen)</li>
-</ul>
-</li>
-<li>Einbeziehung von Kunden
-
-<ul>
-<li>Abnahme und Preview für Kunden</li>
-<li>"Halbfertiges" ausliefern (siehe MVP)</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/10">
-<h1>
-<strong class="green">B</strong> Durchlaufzeiten am SCRUM Board</h1>
-
-<ul>
-<li><p>SCRUM Board warnt vor Queueing</p></li>
-<li><p>Nur done ist done</p></li>
-</ul>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/11">
-<h1>
-<strong class="green">B</strong> Größe der Backlog-Items</h1>
-
-<ul>
-<li><p>Kleine Tasks sind (meistens) effizienter</p></li>
-<li><p>Große Tasks verhindern schnelles Feedback</p></li>
-<li><p>Große Tasks zeigen oft hohes Risiko</p></li>
-<li><p>Risikominimierung durch Aufsplittung</p></li>
-</ul>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/12">
-<h1>
-<strong class="red">P</strong> Goldene Wasserhähne</h1>
-
-<ul>
-<li>"Über-Perfektion"</li>
-<li>"Übers-Ziel-Hinausschießen"</li>
-<li>"Dinge beim zweiten Mal richtig machen"</li>
-</ul>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/13">
-<h1>
-<strong class="blue">T</strong> Minimum Viable Product</h1>
-
-<ul>
-<li>Im Zweifelsfall: Dinge weglassen</li>
-<li>Schnelle Prototypen
-
-<ul>
-<li>Not-Invented-Here vermeiden</li>
-<li>Fertige Tools nutzen</li>
-</ul>
-</li>
-<li>"Minimal akzeptiertes Feature"
-
-<ul>
-<li>Wann ist ein Ticket umgesetzt?</li>
-</ul>
-</li>
-</ul>
-
-<div class="notes">
-
-<ul>
-<li>Beim Minimum Viable Product geht es darum, so schnell wie möglich rauszufinden, ob unser Produkt / Feature jemanden interessiert</li>
-<li>Dafür muss es gegebenenfalls noch nicht "perfekt aussehen" oder "performant" sein oder alle Sicherheitskriterien erfüllen</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/14">
-<h1>
-<strong class="green">B</strong> "Das neue Suchformular"</h1>
-
-<ul>
-<li><p>Zu implementieren: Suche auf Webseite</p></li>
-<li>
-<p>"Nice-to-have": Suche hat Auto-Complete</p>
-
-<ul>
-<li>Verzögert Auslieferung</li>
-<li>Läuft Gefahr, nicht gewollt zu sein</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/15">
-<h1>
-<strong class="red">P</strong> Ursachen beheben statt Symptome bekämpfen</h1>
-
-<ul>
-<li><p>Gleiche Fehler tauchen immer wieder auf</p></li>
-<li><p>Dinge gehen nur manchmal</p></li>
-</ul>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/16">
-<h1>
-<strong class="blue">T</strong> The 5 WHYs</h1>
-
-<ul>
-<li><p>5 Mal "Warum?" fragen</p></li>
-<li>
-<p>"Root Cause Analysis"</p>
-
-<ul>
-<li>Ursache des Problems finden</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/17">
-<h1>
-<strong class="green">B</strong> Kaputtes SSO</h1>
-
-<ul>
-<li>Problem: SSO geht nicht</li>
-<li>1. Warum: SSO Server liefert Schrott</li>
-<li>2. Warum: Paket auf SSO Server fehlt</li>
-<li>3. Warum: Server neu aufgesetzt</li>
-<li>4. Warum: Spezifikation an Ops unklar</li>
-<li>5. Warum: Dev und Ops Komm.-Problem</li>
-</ul>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/18">
-<h1>
-<strong class="red">P</strong> Bauchgefühl-entscheidungen</h1>
-
-<ul>
-<li><p>"Ich bin der festen Überzeugung, dass..."</p></li>
-<li><p>"Meiner Meinung nach sollten wir..."</p></li>
-<li><p>"Das liegt vermutlich an..."</p></li>
-</ul>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/19">
-<h1>
-<strong class="blue">T</strong> Hypothesen-getriebene Experimente</h1>
-
-<ul>
-<li><p>Experimente bestätigen / wiederlegen These</p></li>
-<li><p>Möglichst falisfizierbare Hypothesen</p></li>
-<li><p>Nutzung von Daten zur Bestätigung / Widerlegung von Hypothesen</p></li>
-</ul>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/20">
-<h1>
-<strong class="green">B</strong> Menü macht Seite lahm</h1>
-
-<ul>
-<li>Beobachtung: 3000 DB Requests pro <br>Seitenaufruf für Menü-Rendering</li>
-<li>Hypothese: Macht Seitenaufbau lahm</li>
-<li>Experiment: Neues Caching
-
-<ul>
-<li>Performancetest vorher</li>
-<li>Performancetest nachher</li>
-<li>Tests mit realen Daten durchführen</li>
-</ul>
-</li>
-<li>Ergebnis: 50% Beschleunigung</li>
-</ul>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/21">
-<h1>
-<strong class="red">P</strong> Wie messe ich den Erfolg von Maßnahmen</h1>
-
-<ul>
-<li><p>Wie finde ich die richtigen Metriken?</p></li>
-<li><p>Wie interpretiere ich meine Metriken?</p></li>
-<li><p>Wie messe ich Verbesserungen?</p></li>
-<li><p>Welche Metriken helfen bei Entscheidungsfindung?</p></li>
-</ul>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/22">
-<h1>
-<strong class="blue">T</strong> Actionable Metrics</h1>
-
-<ul>
-<li><p>Metriken, aus denen sich Entscheidungen ableiten lassen: <strong>Actionable Metrics</strong></p></li>
-<li><p>Metriken, die uns nicht bei Entscheidungsfindung helfen: <strong>Vanity Metrics</strong></p></li>
-</ul>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/23">
-<h1>
-<strong class="green">B</strong> Actionable Metrics vs. Vanity Metrics</h1>
-
-<ul>
-<li><p>Konversionsrate vs. Seitenaufrufe</p></li>
-<li><p>Aktivierungen vs. Downloads</p></li>
-<li><p>Durchlaufzeit vs. Story Points</p></li>
-<li><p>Fakturierte Stunden vs. Arbeitszeit</p></li>
-</ul>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/24">
-<h1>
-<strong class="green">B</strong> Pirate Metrics AARRR</h1>
-
-<ul class="non-bullet">
-<li>
-<strong class="rounded">A</strong>cquisition – # Besucher</li>
-<li>
-<strong class="rounded">A</strong>ctivation – # glücklicher Besucher</li>
-<li>
-<strong class="rounded">R</strong>etention – # wiederkehrender Besucher</li>
-<li>
-<strong class="rounded">R</strong>evenue – # bezahlender Besucher</li>
-<li>
-<strong class="rounded">R</strong>eferral – # empfehlender Besucher</li>
-</ul>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/25">
-<h1>
-<strong class="red">P</strong> Innovation und Lernen transparent machen</h1>
-
-<ul>
-<li><p>Wie kann Innovation und Lernen "dokumentiert" werden?</p></li>
-<li><p>Wie kann ich darüber buchhalten?</p></li>
-</ul>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/26">
-<h1>
-<strong class="blue">T</strong> Innovation Radar</h1>
-
-<ul>
-<li>Grafische Darstellung
-
-<ul>
-<li>Phasen der Adaption</li>
-<li>Bewegung visualisieren</li>
-</ul>
-</li>
-<li>WIP Limits vereinbaren</li>
-</ul>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/27">
-<h1>
-<strong class="green">B</strong> Beispiel für Innovation Radar</h1>
-
-<table>
-<tr>
-<td><img src="./file/lean_methods/technology_radar.jpg" height="400px"></td>
-<td><img src="./file/lean_methods/technology_radar_2.jpg" height="400px"></td>
-</tr>
-</table>
-</div>
-</div>
-<div id="lean_methods_lean_methods" class="slide " data-transition="none">
-<div class="content " ref="lean_methods/lean_methods/28">
-<h1>Methoden-Übersicht</h1>
-
-<ul>
-<li>Build-Measure-Learn Loop</li>
-<li>MVP &amp; Small Batches</li>
-<li>5 WHYs</li>
-<li>Hypothesen-getriebene Experimente</li>
-<li>Actionable Metrics</li>
-<li>Innovation Radar</li>
-</ul>
-</div>
-</div>
-<div id="next_steps_next_steps" class="slide " data-transition="none">
-<div class="content " ref="next_steps/next_steps">
-<h1>Und jetzt?</h1>
-
-<h2>Adopt &amp; Apply-Measure-Learn Loop</h2>
+<div id="06_gherkin_gherkin" class="slide " data-transition="none">
+<div class="content " ref="06_gherkin/gherkin/4">
+<h1>Gherkin Keywords</h1>
 
 <ul>
 <li>
-<p>Methoden ausprobieren (als Team), z.B.</p>
+<code>Background</code> set the stage for the test</li>
+<li>
+<code>Feature</code> starts feature and gives a title</li>
+<li>
+<code>Scenario</code> starts scenario and gives description</li>
+<li>Steps - one of
 
 <ul>
-<li>5 WHYs eignen sich für Daily und Retro</li>
-<li>Innovations-Radar einführen</li>
-<li>Metriken überlegen</li>
+<li>
+<code>Given</code> <code>When</code> <code>Then</code> <code>And</code> <code>But</code>
+</li>
+<li>Syntactically the same</li>
+<li>Semantically different</li>
 </ul>
 </li>
-<li><p>Methoden Evaluieren</p></li>
-<li><p>Methoden anpassen</p></li>
 </ul>
-
-<div class="notes">
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide " data-transition="none">
+<div class="content " ref="06_gherkin/gherkin/5">
+<h1>Features</h1>
 
 <ul>
-<li>Nach der theoretischen Vorstellung ist jetzt die Frage, wie man als Team / Firma mit LEAN Methoden starten kann</li>
-<li>Selbstrekursion: "Build -&gt; Measure -&gt; Learn" Loop wird zu "Adopt &amp; Apply -&gt; Measure -&gt; Leanr" Loop</li>
+<li>One feature per <code>*.feature</code>-file</li>
+<li>Features are started by
+
+<ul>
+<li>
+<code>Feature:</code> keyword</li>
+<li>3 indented lines</li>
+<li>write whatever you want until</li>
+<li>first scenario, starting with <code>Scenario:</code>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="06_gherkin/gherkin/6">
+<h1>Directory Layout</h1>
+
+<pre><code>Tests
+└── Behat
+    └── Features
+        ├── Login.feature
+        ├── Register.feature
+        └── ResetPassword.feature</code></pre>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="06_gherkin/gherkin/7">
+<pre class="sh_gherkin"><code># Feature example
+
+Feature: Serve coffee
+  In order to earn money
+  Customers should be able to
+  buy coffee at all times
+
+  Scenario: Buy last coffee
+    Given there is 1 coffee left \
+          in the machine
+    And I have deposited 1 dollar
+    When I press the coffee button
+    Then I should be served a coffee</code></pre>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide " data-transition="none">
+<div class="content " ref="06_gherkin/gherkin/8">
+<h1>Scenarios</h1>
+
+<ul>
+<li>Every scenario starts with <code>Scenario:</code>
+
+<ul>
+<li>can have an optional title following <code>:</code>
+</li>
+</ul>
+</li>
+<li>Each feature can have 1 or more scenarios</li>
+<li>Every scenario consists of one or more steps</li>
+</ul>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="06_gherkin/gherkin/9">
+<pre class="sh_gherkin"><code># Scenario examples
+
+Scenario: Wilson posts to his own blog
+  Given I am logged in as Wilson
+  When I try to post to "Expensive Therapy"
+  Then I should see "Your article was published."
+
+Scenario: Greg posts to a client's blog
+  Given I am logged in as Greg
+  When I try to post to "Expensive Therapy"
+  Then I should see "Your article was published."</code></pre>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide " data-transition="none">
+<div class="content " ref="06_gherkin/gherkin/10">
+<h1>Steps</h1>
+
+<ul>
+<li>
+<code>Given</code> puts system in a known state</li>
+<li>
+<code>When</code> describes <em>key action</em> of a scenario</li>
+<li>
+<code>Then</code> describes expected outcome</li>
+<li>
+<code>And</code> and <code>But</code> adds further steps to given, when, then</li>
+</ul>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="06_gherkin/gherkin/11">
+<pre class="sh_gherkin"><code>Scenario: Login for secure downloads
+  Given I am on the login page
+  And I enter valid credentials
+  And I press "Login"
+  When I wait for 2 seconds
+  And I follow "Secure Downloads"
+  Then I should see "secret-file.txt"
+  And I should see "Logout"
+  But I should not see "Login"</code></pre>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide " data-transition="none">
+<div class="content " ref="06_gherkin/gherkin/12">
+<h1>Distinction of steps</h1>
+
+<ul>
+<li>Behat does not distinguish between steps</li>
+<li>You should do so!</li>
+<li>Syntax vs. semantics</li>
+</ul>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide " data-transition="none">
+<div class="content " ref="06_gherkin/gherkin/13">
+<h1>Backgrounds</h1>
+
+<ul>
+<li>Allow to set context before running scenarios</li>
+<li>Valid for all scenarios in a feature</li>
+<li>Run <em>before each</em> scenario</li>
+<li>Contain a number of steps</li>
+</ul>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="06_gherkin/gherkin/14">
+<pre class="sh_gherkin"><code>Feature: Multiple site support
+
+  Background:
+    Given a global administrator named "Greg"
+    And a blog named "Greg's anti-tax rants"
+    And a customer named "Wilson"
+    And a blog named "Expensive Therapy" \
+        owned by "Wilson"
+
+
+  Scenario: Wilson posts to his own blog
+    Given I am logged in as Wilson
+    When I try to post to "Expensive Therapy"
+    Then I should see "Article was published."
+
+  Scenario: Greg posts to a client's blog
+    Given I am logged in as Greg
+    When I try to post to "Expensive Therapy"
+    Then I should see "Article was published."</code></pre>
+</div>
+</div>
+<div id="07_behat_setup_behat_setup" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="07_behat_setup/behat_setup/1">
+<h1>Behat Setup</h1>
+
+<h2>How to Set Up Behat in TYPO3</h2>
+</div>
+</div>
+<div id="07_behat_setup_behat_setup" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="07_behat_setup/behat_setup/2">
+<h1>Basic Project Layout</h1>
+
+<pre><code>typo3conf/ext/pt_CUSTOMER_test
+├── behat.yaml
+├── composer.json
+├── Fixtures
+├── Tests
+│   └── Behat
+└── vendor
+    ├── behat
+    └── punktde
+        └── ...
+            └── Behat
+                └── Context</code></pre>
+</div>
+</div>
+<div id="07_behat_setup_behat_setup" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="07_behat_setup/behat_setup/3">
+<h1>Using Composer</h1>
+
+<pre class="sh_json"><code>{
+  "require": {
+    "behat/behat": "3.0.11",
+    "behat/mink-extension": "2.0.0",
+    "behat/mink-selenium2-driver": "*",
+  }
+}</code></pre>
+</div>
+</div>
+<div id="07_behat_setup_behat_setup" class="slide " data-transition="none">
+<div class="content " ref="07_behat_setup/behat_setup/4">
+<h1>Behat Configuration</h1>
+
+<ul>
+<li>Behat tries to load <code>behat.yml</code> or <code>config/behat.yml</code>
+</li>
+<li>You can configure
+
+<ul>
+<li>paths</li>
+<li>contexts</li>
+<li>filters</li>
+<li>profiles</li>
+<li>extensions</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="07_behat_setup_behat_setup" class="slide code_slide small" data-transition="none">
+<div class="content code_slide small" ref="07_behat_setup/behat_setup/5">
+<h1>Sample Configuration</h1>
+
+<pre class="sh_yaml"><code>default:
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://project_url
+      default_session: selenium2
+      selenium2:
+        wd_host: http://localhost:4444/wd/hub
+        browser: firefox</code></pre>
+</div>
+</div>
+<div id="07_behat_setup_behat_setup" class="slide " data-transition="none">
+<div class="content " ref="07_behat_setup/behat_setup/6">
+<h1>Selenium Server</h1>
+
+<ul>
+<li>Download from <a href="http://www.seleniumhq.org/download/">http://www.seleniumhq.org/download/</a>
+</li>
+<li>Start the downloaded jar with <code>java -jar /Applications/selenium-server-standalone-2.45.0.jar</code>
+</li>
+<li>Create a shell alias: <br>
+<code>alias startselenium=java -jar /Applications/selenium-server-standalone-2.45.0.jar</code>
+</li>
+</ul>
+</div>
+</div>
+<div id="07_behat_setup_behat_setup" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="07_behat_setup/behat_setup/7">
+<h1>Run Your Tests</h1>
+
+<h1>From within the test-extension in TYPO3</h1>
+
+<p>$ bin/behat</p>
+</div>
+</div>
+<div id="08_custom_step_definitions_custom_step_definitions" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="08_custom_step_definitions/custom_step_definitions/1">
+<h1>Custom Step Definitions</h1>
+
+<h2>How to write your own step definitions</h2>
+</div>
+</div>
+<div id="08_custom_step_definitions_custom_step_definitions" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="08_custom_step_definitions/custom_step_definitions/2">
+<h1>Custom Step Definition in Gherkin</h1>
+
+<pre class="sh_gherkin"><code>Background:
+  And I am in "desktop" layout</code></pre>
+</div>
+</div>
+<div id="08_custom_step_definitions_custom_step_definitions" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="08_custom_step_definitions/custom_step_definitions/3">
+<h1>Missing Step Definition</h1>
+
+<pre class="sh_shell"><code>$ bin/behat
+
+--- FeatureContext has missing steps. \
+    Define them with these snippets:
+
+    /**
+     * @Given I am in :arg1 layout
+     */
+    public function iAmInLayout($arg1)
+    {
+        throw new PendingException();
+    }</code></pre>
+</div>
+</div>
+<div id="08_custom_step_definitions_custom_step_definitions" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="08_custom_step_definitions/custom_step_definitions/4">
+<h1>Implement Step Definition</h1>
+
+<pre class="sh_php"><code>class ResponsiveContext extends RawMinkContext
+   implements ContextInterface {
+
+   /**
+    * @When I am in :layout layout
+    */
+   public function resizeWindowLayout($layout) {
+     $settings = $this-&gt;settings[$layout];
+     $this-&gt;getSession()-&gt;getDriver()
+        -&gt;resizeWindow(
+          $settings['width'],
+          $settings['height'],
+          'current'
+        );
+     return TRUE;
+   }
+}</code></pre>
+</div>
+</div>
+<div id="08_custom_step_definitions_custom_step_definitions" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="08_custom_step_definitions/custom_step_definitions/5">
+<h1>Add Context to behat.yaml</h1>
+
+<pre class="sh_yaml"><code>default:
+  contexts:
+    -
+      PunktDe\ResponsiveContext</code></pre>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="10_best_practices/best_practices/1">
+<h1>Best Practices</h1>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="10_best_practices/best_practices/2">
+<h1>Email Testing</h1>
+
+<h2>How to Test Sending Emails in TYPO3</h2>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide " data-transition="none">
+<div class="content " ref="10_best_practices/best_practices/3">
+<h1>Common Test-Cases</h1>
+
+<ul>
+<li>Double-opt-in</li>
+<li>Newsletter Registration</li>
+<li>Password forgotten</li>
+</ul>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="10_best_practices/best_practices/4">
+<h1>Send Your Mails to mbox File</h1>
+
+<pre class="sh_php"><code>$GLOBALS['TYPO3_CONF_VARS']['MAIL'] \
+    ['transport'] \
+    = 'mbox'
+$GLOBALS['TYPO3_CONF_VARS']['MAIL'] \
+    ['transport_mbox_file'] \
+    = '/var/apache/onebruker/log/mbox.txt'</code></pre>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="10_best_practices/best_practices/5">
+<h1>Step Definition for Reading mbox File Content</h1>
+
+<pre class="sh_gherkin"><code> Then I should see :content \
+   in the email sent to :recipient
+
+ When I follow :link \
+   in the email set to :recipient</code></pre>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="10_best_practices/best_practices/6">
+<h1>Sample Behat Test</h1>
+
+<pre class="sh_gherkin"><code>Scenario: Registering a new customer
+  When I press "Sign Up!"
+  Then I should see "Thank you for signing up!"
+  And I should see "You signed up to ..." \
+      in the email sent to "test@test.com"
+  When I am on "/"
+  And I follow "/authentication.html" \
+      in the email sent to "test@test.com"
+  Then I should see "Thank you for registering."</code></pre>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide " data-transition="none">
+<div class="content " ref="10_best_practices/best_practices/7">
+<h1>SMTP Proxies</h1>
+
+<ul>
+<li>
+<code>mailbox.txt</code> is great!</li>
+<li>An API would be nicer!</li>
 </ul>
 
+<p><img src="./file/10_best_practices/mailhog.png" height="600px"></p>
 </div>
 </div>
-</div>
-<div id="resources_resources" class="slide new-chapter center" data-transition="none">
-<div class="content new-chapter center" ref="resources/resources/1">
-<h1>Lesenswertes</h1>
+<div id="10_best_practices_best_practices" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="10_best_practices/best_practices/8">
+<h1>Database Testing</h1>
 
-<p><img src="./file/resources/lean_book_book.png" width="450px"></p>
-
-<p><a href="http://theleanstartup.com/book">The Lean Startup - Eric Ries</a></p>
+<h2>How to Manage Database State in Tests</h2>
 </div>
 </div>
-<div id="resources_resources" class="slide " data-transition="none">
-<div class="content " ref="resources/resources/2">
-<h1>Lesenswertes</h1>
+<div id="10_best_practices_best_practices" class="slide " data-transition="none">
+<div class="content " ref="10_best_practices/best_practices/9">
+<h1>Problems with Database Tests</h1>
 
-<p><img src="./file/resources/lean_enterprise.jpg" height="450px"></p>
-
-<p><a href="http://shop.oreilly.com/product/0636920030355.do">Lean Enterprise - Jez Humble</a></p>
+<ul>
+<li>What happens if tests change database content</li>
+<li>How to assert database consistency</li>
+<li>How to handle database dumps in your tests</li>
+</ul>
 </div>
 </div>
-<div id="resources_resources" class="slide " data-transition="none">
-<div class="content " ref="resources/resources/3">
-<h1>Lesenswertes</h1>
+<div id="10_best_practices_best_practices" class="slide " data-transition="none">
+<div class="content " ref="10_best_practices/best_practices/10">
+<h1>Basic Setup</h1>
 
-<p><img src="./file/resources/running_lean.png" height="450px"></p>
-
-<p><a href="http://ashmaurya.com">Running Lean - Ash Maurya</a></p>
+<ul>
+<li>Add a new <code>TYPO3_CONTEXT</code> for testing</li>
+<li>Use a separate database for testing</li>
+<li>Configure test database in Behat configuration</li>
+</ul>
 </div>
 </div>
-<div id="resources_resources" class="slide " data-transition="none">
-<div class="content " ref="resources/resources/4">
-<h1>Lesenswertes</h1>
+<div id="10_best_practices_best_practices" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="10_best_practices/best_practices/11">
+<h1>TYPO_CONTEXT for Testing</h1>
 
-<p><img src="./file/resources/lean_bites.jpg" height="450px"></p>
+<pre class="sh_php"><code>switch ($applicationContext) {
+    case 'Testing/Development':
+        $GLOBALS['TYPO3_CONF_VARS']['DB'] \
+          ['username'] = 'test';
+        $GLOBALS['TYPO3_CONF_VARS']['DB'] \
+          ['password'] = 'test';
+        $GLOBALS['TYPO3_CONF_VARS']['DB'] \
+          ['database'] = 'test';
+        break;
+}</code></pre>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="10_best_practices/best_practices/12">
+<h1>Database Context in Behat</h1>
 
-<p><a href="http://leanpub.com/lean-bites">Lean Bites - Matthias Marschall &amp; Dan Ackerson</a></p>
+<pre class="sh_yaml"><code>contexts:
+  -
+    DatabaseTestingContext:
+      featureBasePath:
+        Tests/Behat/Features
+      databaseCredentials:
+        primaryDatabase:
+          database: test
+          hostname: localhost
+          username: test
+          password: test</code></pre>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="10_best_practices/best_practices/13">
+<h1>Database Context</h1>
+
+<pre class="sh_php"><code>class DatabaseTestingContext
+      implements Context {
+
+  /**
+   * @Given /^dataset :dataset \
+   *          is added to :database$/
+   */
+  public function importDataSetToDatabase \
+    ($dataSetFilePath, $schema) { ... }
+
+  /**
+   * @Given /^the database dump :dump is \
+   *          imported to :database$/
+   */
+  public function importDatabaseDumpToDatabase \
+    ($dumpFilePath, $schema) { ... }
+
+}</code></pre>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="10_best_practices/best_practices/14">
+<h1>Using DB Dumps and Fixtures</h1>
+
+<pre class="sh_gherkin"><code>Background:
+    Given the database dump "Fixtures/dump.sql" \
+      is imported to "primaryDatabase"
+    And dataset "Fixtures/Protocol.yaml" \
+      is added to "primaryDatabase"</code></pre>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide " data-transition="none">
+<div class="content " ref="10_best_practices/best_practices/15">
+<h1>Issue References</h1>
+
+<ul>
+<li>Use your ISSUE IDs throughout tests, git and ticket system</li>
+<li>Given <code>PRJ-1234</code> is your ticket number:
+
+<ul>
+<li><code>Scenario: See the latest events [PRJ-1234]</code></li>
+<li><code>git commit -m "... PRJ-1234 ..."</code></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="99_resources_resources" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="99_resources/resources/1">
+<h1>Questions?</h1>
+</div>
+</div>
+<div id="99_resources_resources" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="99_resources/resources/2">
+<h1>READ!Me</h1>
+</div>
+</div>
+<div id="99_resources_resources" class="slide " data-transition="none">
+<div class="content " ref="99_resources/resources/3">
+<h1>Books</h1>
+
+<p><img src="./file/99_resources/rspec_book.png" height="500px"></p>
+</div>
+</div>
+<div id="99_resources_resources" class="slide " data-transition="none">
+<div class="content " ref="99_resources/resources/4">
+<h1>Further Readings</h1>
+
+<ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Behavior-driven_development">Behavior Driven Development on Wikipedia</a></p></li>
+<li><p><a href="http://docs.behat.org/">Behat Online Documentation</a></p></li>
+<li><p><a href="https://sites.google.com/site/unclebobconsultingllc/the-truth-about-bdd">"The Truth About BDD" - Robert C. Martin</a></p></li>
+</ul>
 </div>
 </div>
 
