@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Behavior Driven Development with Behat</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+
+  <link rel="stylesheet" href=".//css/reset.css" type="text/css"/>
+
+
+  <link type="text/css" href=".//css/fg.menu.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href=".//css/theme/ui.all.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href=".//css/sh_style.css" rel="stylesheet" />
+  <link type="text/css" href=".//css/tipsy.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href=".//css/showoff.css" type="text/css"/>
+
+  <script type="text/javascript" src=".//js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src=".//js/jquery.cycle.all.js"></script>
+	<script type="text/javascript" src=".//js/jquery-print.js"></script>
+  <script type="text/javascript" src=".//js/jquery.batchImageLoad.js"></script>
+  <script type="text/javascript" src=".//js/jquery.parsequery.min.js"></script>
+  <script type="text/javascript" src=".//js/jquery.doubletap-0.1.js"></script>
+  <script type="text/javascript" src=".//js/jquery.tipsy.js"></script>
+
+  <script type="text/javascript" src=".//js/fg.menu.js"></script>
+  <script type="text/javascript" src=".//js/showoff.js"></script>
+  <script type="text/javascript" src=".//js/jTypeWriter.js"> </script>
+  <script type="text/javascript" src=".//js/sh_main.min.js"></script>
+  <script type="text/javascript" src=".//js/core.js"></script>
+  <script type="text/javascript" src=".//js/showoffcore.js"></script>
+  <script type="text/javascript" src=".//js/coffee-script.js"></script>
+
+      <script type="text/javascript" src=".//js/sh_lang/sh_gherkin.min.js"></script>
+      <script type="text/javascript" src=".//js/sh_lang/sh_json.min.js"></script>
+      <script type="text/javascript" src=".//js/sh_lang/sh_yaml.min.js"></script>
+      <script type="text/javascript" src=".//js/sh_lang/sh_shell.min.js"></script>
+      <script type="text/javascript" src=".//js/sh_lang/sh_php.min.js"></script>
+
+    <link rel="stylesheet" href=".//file/custom.css" type="text/css"/>
+
+
+  <script type="text/javascript">
+    $(function(){
+      setupPreso(false, './');
+    });
+
+    editUrl  = "";
+  </script>
+
+</head>
+
+<body>
+
+<a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="navmenu"><span class="ui-icon ui-icon-triangle-1-s"></span>slides</a>
+<div id="navigation" class="hidden"></div>
+<a tabindex="1" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="stylemenu"><span class="ui-icon ui-icon-triangle-1-s"></span>styles</a>
+<div id="stylepicker" class="hidden"></div>
+
+
+<div id="help">
+  <table>
+    <tr><td class="key">z, ?</td><td>toggle help (this)</td></tr>
+    <tr><td class="key">space, &rarr;</td><td>next slide</td></tr>
+    <tr><td class="key">shift-space, &larr;</td><td>previous slide</td></tr>
+    <tr><td class="key">b</td><td>blank screen</td></tr>
+    <tr><td class="key">d</td><td>toggle debug mode</td></tr>
+    <tr><td class="key">## &lt;ret&gt;</td><td>go to slide #</td></tr>
+    <tr><td class="key">c, t</td><td>table of contents (vi)</td></tr>
+    <tr><td class="key">f</td><td>toggle footer</td></tr>
+    <tr><td class="key">g</td><td>toggle follow</td></tr>
+    <tr><td class="key">r</td><td>reload slides</td></tr>
+    <tr><td class="key">n</td><td>toggle notes</td></tr>
+    <tr><td class="key">p</td><td>run preshow</td></tr>
+    <tr><td class="key">P</td><td>toggle pause</td></tr>
+    <tr><td class="key">s</td><td>choose style</td></tr>
+  </table>
+</div>
+
+<div class="buttonNav">
+  <input type="submit" onClick="prevStep();" value="prev"/>
+  <input type="submit" onClick="nextStep();" value="next"/>
+</div>
+
+<div id="preso"><center>loading presentation...</center></div>
+<div id="footer">
+  <span id="followMode"></span>
+  <span id="slideInfo"></span>
+  <span id="debugInfo"></span>
+  <span id="notesInfo"></span>
+  <span id="slideFilename"></span>
+  <img id="disconnected" src=".//css/disconnected.png" />
+</div>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div id="01_title_title" class="slide title_slide" data-transition="none">
+<div class="content title_slide" ref="01_title/title">
+<h1>Behavior Driven Development with Behat</h1>
+
+<h2>Michael Lihs</h2>
+
+<div class="notes">
+
+</div>
+</div>
+</div>
+<div id="02_about_me_about_me" class="slide " data-transition="none">
+<div class="content " ref="02_about_me/about_me">
+<h1>lihsmi.ch</h1>
+
+<h1>@kaktusmimi</h1>
+</div>
+</div>
+<div id="03_agenda_agenda" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="03_agenda/agenda">
+<h1>Agenda</h1>
+
+<ul>
+<li>TDD versus BDD</li>
+<li>Gherkin</li>
+<li>Behat Basics</li>
+<li>Extending Behat</li>
+<li>Best Practices</li>
+</ul>
+</div>
+</div>
+<div id="04_introduction_introduction" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="04_introduction/introduction/1">
+<h1>Introduction to Testing</h1>
+
+<h2>What is it all about?</h2>
+
+<div class="notes">
+
+</div>
+</div>
+</div>
+<div id="04_introduction_introduction" class="slide " data-transition="none">
+<div class="content " ref="04_introduction/introduction/2">
+<h1>Quality</h1>
+
+<h2>Testing facilitates writing better software</h2>
+
+<div class="notes">
+
+</div>
+</div>
+</div>
+<div id="04_introduction_introduction" class="slide " data-transition="none">
+<div class="content " ref="04_introduction/introduction/3">
+<h1>Feedback</h1>
+
+<h2>Testing provides fast and specific feedback</h2>
+
+<div class="notes">
+
+</div>
+</div>
+</div>
+<div id="04_introduction_introduction" class="slide " data-transition="none">
+<div class="content " ref="04_introduction/introduction/4">
+<h1>Confidence</h1>
+
+<h2>Testing enables secure refactoring</h2>
+
+<div class="notes">
+
+</div>
+</div>
+</div>
+<div id="04_introduction_introduction" class="slide " data-transition="none">
+<div class="content " ref="04_introduction/introduction/5">
+<h1>Acceptance</h1>
+
+<h2>Testing helps to meet the clients' requirements</h2>
+
+<div class="notes">
+
+</div>
+</div>
+</div>
+<div id="05_tdd_vs_bdd_tdd_vs_bdd" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="05_tdd_vs_bdd/tdd_vs_bdd/1">
+<h1>TDD vs BDD</h1>
+
+<h2>Focus on behavior</h2>
+</div>
+</div>
+<div id="05_tdd_vs_bdd_tdd_vs_bdd" class="slide " data-transition="none">
+<div class="content " ref="05_tdd_vs_bdd/tdd_vs_bdd/2">
+<p><img src="./file/05_tdd_vs_bdd/tdd_cycle.png" height="600px"></p>
+</div>
+</div>
+<div id="05_tdd_vs_bdd_tdd_vs_bdd" class="slide " data-transition="none">
+<div class="content " ref="05_tdd_vs_bdd/tdd_vs_bdd/3">
+<h1>Welcome to the stage: BDD</h1>
+
+<ul>
+<li>Specify tests in terms of <strong>desired behavior</strong>
+</li>
+<li>Desired behavior reflects <strong>business requirement</strong>
+</li>
+<li>Hence, BDD is an <strong>outside-in</strong> approach</li>
+</ul>
+</div>
+</div>
+<div id="05_tdd_vs_bdd_tdd_vs_bdd" class="slide " data-transition="none">
+<div class="content " ref="05_tdd_vs_bdd/tdd_vs_bdd/4">
+<h1>Specification of behavior</h1>
+
+<ul>
+<li>Specify behavior in terms of <strong>user stories</strong>
+</li>
+<li>Structure of user stories
+
+<ul>
+<li>Verbal description (non-formal)</li>
+<li>Description of <strong>involved roles</strong>
+</li>
+<li>Effects that the story should have</li>
+<li>Acceptance criteria a.k.a. <strong>expected outcome</strong>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="06_gherkin/gherkin/1">
+<h1>Gherkin</h1>
+
+<h2>Human readable tests</h2>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="06_gherkin/gherkin/2">
+<pre class="sh_gherkin"><code>Feature: Language menu
+  In order to switch the website language
+  As a example.com website user
+  I need to be able to select my language
+
+  Scenario: Switching to German
+    When I follow "Language"
+    And I follow "Deutsch"
+    Then I should be on "/de.html"</code></pre>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide " data-transition="none">
+<div class="content " ref="06_gherkin/gherkin/3">
+<h1>Gherkin Syntax</h1>
+
+<ul>
+<li>uses indentation to define structure</li>
+<li>line endings terminate statements</li>
+<li>most lines start with a special keyword</li>
+<li>
+<code>#</code> comments out a line</li>
+</ul>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide " data-transition="none">
+<div class="content " ref="06_gherkin/gherkin/4">
+<h1>Gherkin Keywords</h1>
+
+<ul>
+<li>
+<code>Background</code> set the stage for the test</li>
+<li>
+<code>Feature</code> starts feature and gives a title</li>
+<li>
+<code>Scenario</code> starts scenario and gives description</li>
+<li>Steps - one of
+
+<ul>
+<li>
+<code>Given</code> <code>When</code> <code>Then</code> <code>And</code> <code>But</code>
+</li>
+<li>Syntactically the same</li>
+<li>Semantically different</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide " data-transition="none">
+<div class="content " ref="06_gherkin/gherkin/5">
+<h1>Features</h1>
+
+<ul>
+<li>One feature per <code>*.feature</code>-file</li>
+<li>Features are started by
+
+<ul>
+<li>
+<code>Feature:</code> keyword</li>
+<li>3 indented lines</li>
+<li>write whatever you want until</li>
+<li>first scenario, starting with <code>Scenario:</code>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="06_gherkin/gherkin/6">
+<h1>Directory Layout</h1>
+
+<pre><code>Tests
+└── Behat
+    └── Features
+        ├── Login.feature
+        ├── Register.feature
+        └── ResetPassword.feature</code></pre>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="06_gherkin/gherkin/7">
+<pre class="sh_gherkin"><code># Feature example
+
+Feature: Serve coffee
+  In order to earn money
+  Customers should be able to
+  buy coffee at all times
+
+  Scenario: Buy last coffee
+    Given there is 1 coffee left \
+          in the machine
+    And I have deposited 1 dollar
+    When I press the coffee button
+    Then I should be served a coffee</code></pre>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide " data-transition="none">
+<div class="content " ref="06_gherkin/gherkin/8">
+<h1>Scenarios</h1>
+
+<ul>
+<li>Every scenario starts with <code>Scenario:</code>
+
+<ul>
+<li>can have an optional title following <code>:</code>
+</li>
+</ul>
+</li>
+<li>Each feature can have 1 or more scenarios</li>
+<li>Every scenario consists of one or more steps</li>
+</ul>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="06_gherkin/gherkin/9">
+<pre class="sh_gherkin"><code># Scenario examples
+
+Scenario: Wilson posts to his own blog
+  Given I am logged in as Wilson
+  When I try to post to "Expensive Therapy"
+  Then I should see "Your article was published."
+
+Scenario: Greg posts to a client's blog
+  Given I am logged in as Greg
+  When I try to post to "Expensive Therapy"
+  Then I should see "Your article was published."</code></pre>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide " data-transition="none">
+<div class="content " ref="06_gherkin/gherkin/10">
+<h1>Steps</h1>
+
+<ul>
+<li>
+<code>Given</code> puts system in a known state</li>
+<li>
+<code>When</code> describes <em>key action</em> of a scenario</li>
+<li>
+<code>Then</code> describes expected outcome</li>
+<li>
+<code>And</code> and <code>But</code> adds further steps to given, when, then</li>
+</ul>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="06_gherkin/gherkin/11">
+<pre class="sh_gherkin"><code>Scenario: Login for secure downloads
+  Given I am on the login page
+  And I enter valid credentials
+  And I press "Login"
+  When I wait for 2 seconds
+  And I follow "Secure Downloads"
+  Then I should see "secret-file.txt"
+  And I should see "Logout"
+  But I should not see "Login"</code></pre>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide " data-transition="none">
+<div class="content " ref="06_gherkin/gherkin/12">
+<h1>Distinction of steps</h1>
+
+<ul>
+<li>Behat does not distinguish between steps</li>
+<li>You should do so!</li>
+<li>Syntax vs. semantics</li>
+</ul>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide " data-transition="none">
+<div class="content " ref="06_gherkin/gherkin/13">
+<h1>Backgrounds</h1>
+
+<ul>
+<li>Allow to set context before running scenarios</li>
+<li>Valid for all scenarios in a feature</li>
+<li>Run <em>before each</em> scenario</li>
+<li>Contain a number of steps</li>
+</ul>
+</div>
+</div>
+<div id="06_gherkin_gherkin" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="06_gherkin/gherkin/14">
+<pre class="sh_gherkin"><code>Feature: Multiple site support
+
+  Background:
+    Given a global administrator named "Greg"
+    And a blog named "Greg's anti-tax rants"
+    And a customer named "Wilson"
+    And a blog named "Expensive Therapy" \
+        owned by "Wilson"
+
+
+  Scenario: Wilson posts to his own blog
+    Given I am logged in as Wilson
+    When I try to post to "Expensive Therapy"
+    Then I should see "Article was published."
+
+  Scenario: Greg posts to a client's blog
+    Given I am logged in as Greg
+    When I try to post to "Expensive Therapy"
+    Then I should see "Article was published."</code></pre>
+</div>
+</div>
+<div id="07_behat_setup_behat_setup" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="07_behat_setup/behat_setup/1">
+<h1>Behat Setup</h1>
+
+<h2>How to Set Up Behat in TYPO3</h2>
+</div>
+</div>
+<div id="07_behat_setup_behat_setup" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="07_behat_setup/behat_setup/2">
+<h1>Basic Project Layout</h1>
+
+<pre><code>typo3conf/ext/pt_CUSTOMER_test
+├── behat.yaml
+├── composer.json
+├── Fixtures
+├── Tests
+│   └── Behat
+└── vendor
+    ├── behat
+    └── punktde
+        └── ...
+            └── Behat
+                └── Context</code></pre>
+</div>
+</div>
+<div id="07_behat_setup_behat_setup" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="07_behat_setup/behat_setup/3">
+<h1>Using Composer</h1>
+
+<pre class="sh_json"><code>{
+  "require": {
+    "behat/behat": "3.0.11",
+    "behat/mink-extension": "2.0.0",
+    "behat/mink-selenium2-driver": "*",
+  }
+}</code></pre>
+</div>
+</div>
+<div id="07_behat_setup_behat_setup" class="slide " data-transition="none">
+<div class="content " ref="07_behat_setup/behat_setup/4">
+<h1>Behat Configuration</h1>
+
+<ul>
+<li>Behat tries to load <code>behat.yml</code> or <code>config/behat.yml</code>
+</li>
+<li>You can configure
+
+<ul>
+<li>paths</li>
+<li>contexts</li>
+<li>filters</li>
+<li>profiles</li>
+<li>extensions</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="07_behat_setup_behat_setup" class="slide code_slide small" data-transition="none">
+<div class="content code_slide small" ref="07_behat_setup/behat_setup/5">
+<h1>Sample Configuration</h1>
+
+<pre class="sh_yaml"><code>default:
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://project_url
+      default_session: selenium2
+      selenium2:
+        wd_host: http://localhost:4444/wd/hub
+        browser: firefox</code></pre>
+</div>
+</div>
+<div id="07_behat_setup_behat_setup" class="slide " data-transition="none">
+<div class="content " ref="07_behat_setup/behat_setup/6">
+<h1>Selenium Server</h1>
+
+<ul>
+<li>Download from <a href="http://www.seleniumhq.org/download/">http://www.seleniumhq.org/download/</a>
+</li>
+<li>Start the downloaded jar with <code>java -jar /Applications/selenium-server-standalone-2.45.0.jar</code>
+</li>
+<li>Create a shell alias: <br>
+<code>alias startselenium=java -jar /Applications/selenium-server-standalone-2.45.0.jar</code>
+</li>
+</ul>
+</div>
+</div>
+<div id="07_behat_setup_behat_setup" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="07_behat_setup/behat_setup/7">
+<h1>Run Your Tests</h1>
+
+<h1>From within the test-extension in TYPO3</h1>
+
+<p>$ bin/behat</p>
+</div>
+</div>
+<div id="08_custom_step_definitions_custom_step_definitions" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="08_custom_step_definitions/custom_step_definitions/1">
+<h1>Custom Step Definitions</h1>
+
+<h2>How to write your own step definitions</h2>
+</div>
+</div>
+<div id="08_custom_step_definitions_custom_step_definitions" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="08_custom_step_definitions/custom_step_definitions/2">
+<h1>Custom Step Definition in Gherkin</h1>
+
+<pre class="sh_gherkin"><code>Background:
+  And I am in "desktop" layout</code></pre>
+</div>
+</div>
+<div id="08_custom_step_definitions_custom_step_definitions" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="08_custom_step_definitions/custom_step_definitions/3">
+<h1>Missing Step Definition</h1>
+
+<pre class="sh_shell"><code>$ bin/behat
+
+--- FeatureContext has missing steps. \
+    Define them with these snippets:
+
+    /**
+     * @Given I am in :arg1 layout
+     */
+    public function iAmInLayout($arg1)
+    {
+        throw new PendingException();
+    }</code></pre>
+</div>
+</div>
+<div id="08_custom_step_definitions_custom_step_definitions" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="08_custom_step_definitions/custom_step_definitions/4">
+<h1>Implement Step Definition</h1>
+
+<pre class="sh_php"><code>class ResponsiveContext extends RawMinkContext
+   implements ContextInterface {
+
+   /**
+    * @When I am in :layout layout
+    */
+   public function resizeWindowLayout($layout) {
+     $settings = $this-&gt;settings[$layout];
+     $this-&gt;getSession()-&gt;getDriver()
+        -&gt;resizeWindow(
+          $settings['width'],
+          $settings['height'],
+          'current'
+        );
+     return TRUE;
+   }
+}</code></pre>
+</div>
+</div>
+<div id="08_custom_step_definitions_custom_step_definitions" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="08_custom_step_definitions/custom_step_definitions/5">
+<h1>Add Context to behat.yaml</h1>
+
+<pre class="sh_yaml"><code>default:
+  contexts:
+    -
+      PunktDe\ResponsiveContext</code></pre>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="10_best_practices/best_practices/1">
+<h1>Best Practices</h1>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="10_best_practices/best_practices/2">
+<h1>Email Testing</h1>
+
+<h2>How to Test Sending Emails in TYPO3</h2>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide " data-transition="none">
+<div class="content " ref="10_best_practices/best_practices/3">
+<h1>Common Test-Cases</h1>
+
+<ul>
+<li>Double-opt-in</li>
+<li>Newsletter Registration</li>
+<li>Password forgotten</li>
+</ul>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="10_best_practices/best_practices/4">
+<h1>Send Your Mails to mbox File</h1>
+
+<pre class="sh_php"><code>$GLOBALS['TYPO3_CONF_VARS']['MAIL'] \
+    ['transport'] \
+    = 'mbox'
+$GLOBALS['TYPO3_CONF_VARS']['MAIL'] \
+    ['transport_mbox_file'] \
+    = '/var/apache/onebruker/log/mbox.txt'</code></pre>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="10_best_practices/best_practices/5">
+<h1>Step Definition for Reading mbox File Content</h1>
+
+<pre class="sh_gherkin"><code> Then I should see :content \
+   in the email sent to :recipient
+
+ When I follow :link \
+   in the email set to :recipient</code></pre>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="10_best_practices/best_practices/6">
+<h1>Sample Behat Test</h1>
+
+<pre class="sh_gherkin"><code>Scenario: Registering a new customer
+  When I press "Sign Up!"
+  Then I should see "Thank you for signing up!"
+  And I should see "You signed up to ..." \
+      in the email sent to "test@test.com"
+  When I am on "/"
+  And I follow "/authentication.html" \
+      in the email sent to "test@test.com"
+  Then I should see "Thank you for registering."</code></pre>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide " data-transition="none">
+<div class="content " ref="10_best_practices/best_practices/7">
+<h1>SMTP Proxies</h1>
+
+<ul>
+<li>
+<code>mailbox.txt</code> is great!</li>
+<li>An API would be nicer!</li>
+</ul>
+
+<p><img src="./file/10_best_practices/mailhog.png" height="600px"></p>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="10_best_practices/best_practices/8">
+<h1>Database Testing</h1>
+
+<h2>How to Manage Database State in Tests</h2>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide " data-transition="none">
+<div class="content " ref="10_best_practices/best_practices/9">
+<h1>Problems with Database Tests</h1>
+
+<ul>
+<li>What happens if tests change database content</li>
+<li>How to assert database consistency</li>
+<li>How to handle database dumps in your tests</li>
+</ul>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide " data-transition="none">
+<div class="content " ref="10_best_practices/best_practices/10">
+<h1>Basic Setup</h1>
+
+<ul>
+<li>Add a new <code>TYPO3_CONTEXT</code> for testing</li>
+<li>Use a separate database for testing</li>
+<li>Configure test database in Behat configuration</li>
+</ul>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="10_best_practices/best_practices/11">
+<h1>TYPO_CONTEXT for Testing</h1>
+
+<pre class="sh_php"><code>switch ($applicationContext) {
+    case 'Testing/Development':
+        $GLOBALS['TYPO3_CONF_VARS']['DB'] \
+          ['username'] = 'test';
+        $GLOBALS['TYPO3_CONF_VARS']['DB'] \
+          ['password'] = 'test';
+        $GLOBALS['TYPO3_CONF_VARS']['DB'] \
+          ['database'] = 'test';
+        break;
+}</code></pre>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="10_best_practices/best_practices/12">
+<h1>Database Context in Behat</h1>
+
+<pre class="sh_yaml"><code>contexts:
+  -
+    DatabaseTestingContext:
+      featureBasePath:
+        Tests/Behat/Features
+      databaseCredentials:
+        primaryDatabase:
+          database: test
+          hostname: localhost
+          username: test
+          password: test</code></pre>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="10_best_practices/best_practices/13">
+<h1>Database Context</h1>
+
+<pre class="sh_php"><code>class DatabaseTestingContext
+      implements Context {
+
+  /**
+   * @Given /^dataset :dataset \
+   *          is added to :database$/
+   */
+  public function importDataSetToDatabase \
+    ($dataSetFilePath, $schema) { ... }
+
+  /**
+   * @Given /^the database dump :dump is \
+   *          imported to :database$/
+   */
+  public function importDatabaseDumpToDatabase \
+    ($dumpFilePath, $schema) { ... }
+
+}</code></pre>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide code_slide" data-transition="none">
+<div class="content code_slide" ref="10_best_practices/best_practices/14">
+<h1>Using DB Dumps and Fixtures</h1>
+
+<pre class="sh_gherkin"><code>Background:
+    Given the database dump "Fixtures/dump.sql" \
+      is imported to "primaryDatabase"
+    And dataset "Fixtures/Protocol.yaml" \
+      is added to "primaryDatabase"</code></pre>
+</div>
+</div>
+<div id="10_best_practices_best_practices" class="slide " data-transition="none">
+<div class="content " ref="10_best_practices/best_practices/15">
+<h1>Issue References</h1>
+
+<ul>
+<li>Use your ISSUE IDs throughout tests, git and ticket system</li>
+<li>Given <code>PRJ-1234</code> is your ticket number:
+
+<ul>
+<li><code>Scenario: See the latest events [PRJ-1234]</code></li>
+<li><code>git commit -m "... PRJ-1234 ..."</code></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="99_resources_resources" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="99_resources/resources/1">
+<h1>Questions?</h1>
+</div>
+</div>
+<div id="99_resources_resources" class="slide section_slide" data-transition="none">
+<div class="content section_slide" ref="99_resources/resources/2">
+<h1>READ!Me</h1>
+</div>
+</div>
+<div id="99_resources_resources" class="slide " data-transition="none">
+<div class="content " ref="99_resources/resources/3">
+<h1>Books</h1>
+
+<p><img src="./file/99_resources/rspec_book.png" height="500px"></p>
+</div>
+</div>
+<div id="99_resources_resources" class="slide " data-transition="none">
+<div class="content " ref="99_resources/resources/4">
+<h1>Further Readings</h1>
+
+<ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Behavior-driven_development">Behavior Driven Development on Wikipedia</a></p></li>
+<li><p><a href="http://docs.behat.org/">Behat Online Documentation</a></p></li>
+<li><p><a href="https://sites.google.com/site/unclebobconsultingllc/the-truth-about-bdd">"The Truth About BDD" - Robert C. Martin</a></p></li>
+</ul>
+</div>
+</div>
+
+</div>
+<div id="pauseScreen">
+  Paused
+</div>
+
+</body>
+</html>
